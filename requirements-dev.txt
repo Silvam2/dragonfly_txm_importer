@@ -1,0 +1,3 @@
+# For running the core tests outside Dragonfly.
+# Dragonfly already supplies its own NumPy and PyQt6.
+numpy

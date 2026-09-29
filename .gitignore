@@ -1,0 +1,31 @@
+# Python development files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Generated distributions
+dist/
+build/
+*.zip
+
+# Local scan data, calibration and diagnostic output
+*.txm
+*.txrm
+*.trxm
+*.raw
+*.log
+calibration_v*.json
+dragonfly_txm_placement_*.json
+dragonfly_txm_headers_*.json
+dragonfly_txrm_report_*.json
+
+# Local editor/OS state
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+.DS_Store
