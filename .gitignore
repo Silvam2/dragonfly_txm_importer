@@ -29,3 +29,6 @@ dragonfly_txrm_report_*.json
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Local Claude Code plugin state
+.omc/
