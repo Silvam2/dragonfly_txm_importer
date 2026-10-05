@@ -170,7 +170,7 @@ Optional evidence tests use `TXM_HEADER_REPORT_DIR` for a folder of header
 reports and `TXM_PLACEMENT_REPORT` for a placement-report JSON; they are skipped
 when those variables are not set.
 
-This plugin is released under the MIT License; see `LICENSE`.
+This plugin is released under the BSD 3-Clause License; see `LICENSE`.
 
 Official Dragonfly 2025.1 API references:
 - https://dev.theobjects.com/dragonfly_2025_1_release/Documentation/Extensions/plugins.html

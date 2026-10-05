@@ -354,6 +354,6 @@ A useful installer improvement would be to discover the `%LOCALAPPDATA%\Comet\..
 
 ## 16. License and dependency notices
 
-This project is released under the MIT License; see `LICENSE`.
+This project is released under the BSD 3-Clause License; see `LICENSE`.
 
 The bundled `olefile` 0.47 reader keeps its own BSD-style license and notices in `ZeissTXMImporter/vendor/OLEFILE_LICENSE.txt` and the bundled `olefile` directory. Dragonfly is a separately installed commercial application and is not distributed with this project.

@@ -125,5 +125,5 @@ validated family of reconstruction metadata is accepted.
 
 ## License
 
-Released under the [MIT License](LICENSE). The bundled `olefile` 0.47 keeps its
+Released under the [BSD 3-Clause License](LICENSE). The bundled `olefile` 0.47 keeps its
 upstream license in `ZeissTXMImporter/vendor/OLEFILE_LICENSE.txt`.
