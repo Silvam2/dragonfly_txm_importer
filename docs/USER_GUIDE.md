@@ -44,10 +44,17 @@ installation and use **File > Import ZEISS TXM**. An older installed copy is
 backed up outside the Plugins folder.
 
 To open the `Plugins` folder, paste one of these into the File Explorer address
-bar, depending on your Dragonfly distribution:
+bar, depending on your Dragonfly distribution.
+
+ORS distribution:
 
 ```text
 %LOCALAPPDATA%\ORS\Dragonfly2025.1\pythonUserExtensions\Plugins
+```
+
+Comet distribution:
+
+```text
 %LOCALAPPDATA%\Comet\Dragonfly2025.1\pythonUserExtensions\Plugins
 ```
 

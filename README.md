@@ -43,10 +43,17 @@ Click **Install File menu entry** to copy the plugin into Dragonfly's
 that copy, or using the development launcher above.
 
 To open the `Plugins` folder, paste one of these into the File Explorer address
-bar, depending on your Dragonfly distribution:
+bar, depending on your Dragonfly distribution.
+
+ORS distribution:
 
 ```text
 %LOCALAPPDATA%\ORS\Dragonfly2025.1\pythonUserExtensions\Plugins
+```
+
+Comet distribution:
+
+```text
 %LOCALAPPDATA%\Comet\Dragonfly2025.1\pythonUserExtensions\Plugins
 ```
 
