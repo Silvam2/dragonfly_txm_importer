@@ -9,7 +9,8 @@ def build():
     destination.parent.mkdir(exist_ok=True)
     entries = [(root / "__main__.py", "__main__.py"),
                (root / "docs" / "USER_GUIDE.md", "README.md"),
-               (root / "TEST_RESULTS.txt", "TEST_RESULTS.txt")]
+               (root / "TEST_RESULTS.txt", "TEST_RESULTS.txt"),
+               (root / "LICENSE", "LICENSE")]
     for directory in ("ZeissTXMImporter", "tests"):
         for path in sorted((root / directory).rglob("*")):
             if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc":

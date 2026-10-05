@@ -4,14 +4,15 @@ try:
 except ImportError as exc:
     raise RuntimeError("Run this ZIP in Dragonfly 2025.1: Tools > Python Console.") from exc
 
-# An isolated session name prevents a running 0.3.0 plugin from shadowing this
-# ZIP. No deletion/reloading of Dragonfly's registered plugin modules is needed.
+# An isolated session name prevents an already installed or running copy of the
+# plugin from shadowing this ZIP. No deletion/reloading of Dragonfly's
+# registered plugin modules is needed.
 import importlib
 from pathlib import Path
 import sys
 import types
 
-session_package = "_ZeissTXMImporterPreview_040"
+session_package = "_ZeissTXMImporterPreview_041"
 if session_package not in sys.modules:
     package = types.ModuleType(session_package)
     package.__path__ = [str(Path(__file__).parent / "ZeissTXMImporter")]

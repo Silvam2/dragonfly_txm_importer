@@ -1,14 +1,23 @@
-ZEISS TXM Importer 0.4.0 validation
+ZEISS TXM Importer 0.4.1 validation
 
-PASS: 19 unit tests, including all 48 orientation combinations, complete
-output-voxel reference comparisons, two-reference calibration and conflict
-handling, and both original transforms in the supplied placement report.
-PASS: Actual PyQt6 dialog with mocked ORS objects: old-version isolation,
-two reference imports, calibration saved, report export, subsequent
-standalone imports, and installation from ZIP.
-PASS: Python 3.10 syntax compatibility.
+Automated tests (tests/test_importer.py, mocked Dragonfly API)
+PASS (recorded for 0.4.0): 19 unit tests, including all 48 orientation
+combinations, complete output-voxel reference comparisons, two-reference
+calibration and conflict handling, and both original transforms in a real
+placement report.
+PASS (recorded for 0.4.0): Actual PyQt6 dialog with mocked ORS objects:
+old-version isolation, two reference imports, calibration saved, report
+export, subsequent standalone imports, and installation from ZIP.
+PASS: Python 3.10 syntax check of all plugin, test, and launcher files.
+NOT YET RE-RUN on 0.4.1: the unit test suite. Run it as described in README.md
+and record the result here.
 
-The corrected geometry model agrees with both reported original transforms
-to better than 1e-12 m across the volume corners.
-The updated plugin has not yet executed inside the actual Windows Dragonfly
-session. Live pixel orientation must pass the new reference check.
+Live validation in Dragonfly 2025.1 (Windows), version 0.4.1
+PASS: Full-volume reference check of two original uint16 volumes
+(1013 x 1013 x 1013 and 996 x 996 x 996 voxels, 4x and 20x objectives);
+every imported voxel matched its original and calibration was saved.
+NOT YET CONFIRMED: File-menu loading after installation and restart, and a
+standalone import in a fresh Dragonfly session.
+
+The geometry model agrees with both original transforms to better than
+1e-12 m across the volume corners.

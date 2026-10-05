@@ -1,31 +1,32 @@
-# ZEISS TXM Importer 0.4.0 for Dragonfly 2025.1
+# ZEISS TXM Importer 0.4.1 for Dragonfly 2025.1
 
-This update corrects the coordinate-frame and voxel-center errors in version
-0.3.0. It adds automatic comparison with open original volumes and a saved
-calibration for later standalone imports of the supported TXM reconstruction
-family. Native `.txm` files are read directly and opened read-only.
+This plugin imports processed ZEISS `.txm` reconstruction volumes into
+Dragonfly, preserving native intensity values and voxel-to-world placement. It
+compares imports with open original volumes and saves a calibration for later
+standalone imports of the supported TXM reconstruction family. Native `.txm`
+files are read directly and opened read-only.
 
-## First run of this update
+## First run and calibration
 
-1. Keep the original full-resolution `26-61-A3_trim-1_4x_recon` and
-   `26-61-A3_trim-1_20x_recon` volumes open with those names. They must be the
-   correctly placed originals, not the 0.3.0 previews. Hide the old previews
-   when comparing the new results. This update does not delete or move them.
-2. Close the old importer dialog. You do not need to restart Dragonfly to run
-   this updated ZIP. Its launcher avoids reusing the old version's Python code.
-3. Download the updated `dragonfly_txm_importer.zip` and use **Tools > Python
-   Console** to execute this complete block. Select the newly downloaded ZIP:
+1. Open two correctly placed, full-resolution original volumes of the same
+   reconstruction family at different voxel sizes (for example 4x and 20x
+   scans) through Dragonfly's normal Open/Import workflow. Do not use previews
+   made by this plugin, or by version 0.3.0, as originals.
+2. Close any older importer dialog. You do not need to restart Dragonfly to run
+   the ZIP; its launcher avoids reusing an older version's Python code.
+3. Use **Tools > Python Console** to execute this complete block, and select
+   `dragonfly_txm_importer.zip`:
 
 ```python
 import runpy
 from PyQt6.QtWidgets import QFileDialog
-txm_zip, _ = QFileDialog.getOpenFileName(None, "Select updated TXM importer ZIP", "", "ZIP files (*.zip)")
+txm_zip, _ = QFileDialog.getOpenFileName(None, "Select TXM importer ZIP", "", "ZIP files (*.zip)")
 if txm_zip:
     runpy.run_path(txm_zip, run_name="__main__")
 ```
 
-4. The dialog title must show **0.4.0**. Add the same 4x and 20x `.txm` files.
-   Keep **1/4 preview** selected and click **Import previews**.
+4. The dialog title must show **0.4.1**. Add the `.txm` files that match the
+   open originals. Keep **1/4 preview** selected and click **Import previews**.
 5. A successful comparison labels each new volume **[reference checked]**.
    The log gives the number of verified voxels. After two consistent references
    at different voxel sizes, it reports **Calibration saved**.
@@ -68,9 +69,9 @@ cannot establish that the original itself is physically registered correctly.
 No new landmark fitting, image registration, or specimen-remount correction
 is performed.
 
-## Geometry correction
+## Geometry model
 
-The supplied original 4x and 20x Channels establish world axes
+Native original 4x and 20x Channels establish world axes
 `(-stage X, -stage Z, +stage Y)` and voxel-axis directions `(-X, -Y, +Z)`.
 Their first-voxel positions, in micrometres, are reproduced by:
 
@@ -87,7 +88,7 @@ When an original is open, its actual transform is used directly.
 
 Version 0.3.0 used positive stage axes, transposed the array, and used an N/2
 rather than (N-1)/2 transverse offset. Those previews should not be used for
-placement measurements. This update creates new objects; it does not repair
+placement measurements. Re-importing creates new objects; it does not repair
 previously imported objects in place.
 
 ## Supported files and limits
@@ -117,23 +118,32 @@ reference conventions before starting a fresh calibration.
 
 The bundled `olefile` 0.47 reader needs no installation or internet connection.
 NumPy and PyQt6 come from Dragonfly. The source code and tests are included.
-To uninstall, close Dragonfly and remove only its
-`pythonUserExtensions/Plugins/ZeissTXMImporter` folder; remove the calibration
-file separately if desired.
+
+## Uninstall
+
+1. Close Dragonfly.
+2. Delete only the `pythonUserExtensions\Plugins\ZeissTXMImporter` folder. It is
+   under `%LOCALAPPDATA%\ORS\Dragonfly2025.1\` or
+   `%LOCALAPPDATA%\Comet\Dragonfly2025.1\`, depending on your Dragonfly
+   distribution.
+3. Optional: delete `pythonUserExtensions\TXMImporterBackups` (copies replaced by
+   earlier installs) and `%LOCALAPPDATA%\ORS\ZeissTXMImporter` (the saved
+   calibration; back it up first if you may reinstall).
+
+Volumes already imported into Dragonfly are not affected. If the plugin was only
+run from the ZIP and never installed, only the calibration folder may exist.
 
 ## Validation and technical sources
 
-The updated tests cover synthetic OLE files, asymmetric dimensions, all 48 pixel
+The tests cover synthetic OLE files, asymmetric dimensions, all 48 pixel
 orientations, strided comparisons, an image mismatch missed by sparse probes,
 reference ambiguity, calibration conflicts, both origin conventions, source
-immutability, cancellation, corrupt metadata, installation backups, and both
-original transforms in the supplied report. User reports are not redistributed.
+immutability, cancellation, corrupt metadata, and installation backups. Real
+scan reports are not included in the repository.
 
-Version 0.3.0 is confirmed to have imported both previews in the user's Windows
-Dragonfly session. Version 0.4.0 has local tests with mocked ORS geometry and an
-actual PyQt6 interface check; it still needs the live reference check described
-above. The screenshot and report alone do not contain pixel values and cannot
-prove which raw-image flips the native reader applies.
+Version 0.4.1 has passed full-volume live reference checks against two original
+uint16 volumes in Dragonfly 2025.1, after which calibration was saved. New
+reconstruction families should still be checked against an open original first.
 
 Run the included tests outside Dragonfly with Python and NumPy:
 
@@ -141,8 +151,11 @@ Run the included tests outside Dragonfly with Python and NumPy:
 python -m unittest discover -s tests -v
 ```
 
-Optional evidence tests use `TXM_HEADER_REPORT_DIR` for the three header reports
-and `TXM_PLACEMENT_REPORT` for the supplied placement-report JSON.
+Optional evidence tests use `TXM_HEADER_REPORT_DIR` for a folder of header
+reports and `TXM_PLACEMENT_REPORT` for a placement-report JSON; they are skipped
+when those variables are not set.
+
+This plugin is released under the MIT License; see `LICENSE`.
 
 Official Dragonfly 2025.1 API references:
 - https://dev.theobjects.com/dragonfly_2025_1_release/Documentation/Extensions/plugins.html
