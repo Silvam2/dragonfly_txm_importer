@@ -12,7 +12,7 @@ a calibration so later supported files can be imported standalone.
 Clone or extract this repository into any normal folder, for example:
 
 ```powershell
-git clone <repository-url> dragonfly_txm_importer_repo
+git clone https://github.com/Silvam2/dragonfly_txm_importer.git dragonfly_txm_importer_repo
 ```
 
 The `ZeissTXMImporter` directory, `launch_dev.py`, and this README should sit
