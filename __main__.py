@@ -2,7 +2,7 @@
 try:
     import ORSModel
 except ImportError as exc:
-    raise RuntimeError("Run this ZIP in Dragonfly 2025.1: Tools > Python Console.") from exc
+    raise RuntimeError("Run this ZIP in Dragonfly 2025.1: Utilities > Python Console.") from exc
 
 # An isolated session name prevents an already installed or running copy of the
 # plugin from shadowing this ZIP. No deletion/reloading of Dragonfly's

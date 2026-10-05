@@ -21,7 +21,7 @@ unopened ZIP archive.
 
 ## Run the source in Dragonfly
 
-Open **Tools > Python Console** and run the block below, selecting
+Open **Utilities > Python Console** and run the block below, selecting
 `launch_dev.py` from this repository:
 
 ```python
@@ -41,6 +41,14 @@ Click **Install File menu entry** to copy the plugin into Dragonfly's
 `pythonUserExtensions\Plugins` folder, then restart Dragonfly and use
 **File > Import ZEISS TXM...**. Later repository edits require reinstalling
 that copy, or using the development launcher above.
+
+To open the `Plugins` folder, paste one of these into the File Explorer address
+bar, depending on your Dragonfly distribution:
+
+```text
+%LOCALAPPDATA%\ORS\Dragonfly2025.1\pythonUserExtensions\Plugins
+%LOCALAPPDATA%\Comet\Dragonfly2025.1\pythonUserExtensions\Plugins
+```
 
 For the first calibration, keep two correctly placed full-resolution original
 volumes at different voxel sizes (for example 4x and 20x) open. See

@@ -44,7 +44,7 @@ Depending on the Dragonfly distribution, the user extension root is typically on
 This is the simplest way to try the plugin, and remains useful when developing or diagnosing installation.
 
 1. Clone or extract the complete repository into a normal folder. Do not launch a script while browsing inside an unopened ZIP archive.
-2. Open Dragonfly and its **Tools > Python Console**.
+2. Open Dragonfly and its **Utilities > Python Console**.
 3. Run the block below and select `launch_dev.py` from the repository.
 4. Confirm that the dialog title shows **ZEISS TXM Importer 0.4.1**.
 

@@ -14,7 +14,7 @@ files are read directly and opened read-only.
    made by this plugin, or by version 0.3.0, as originals.
 2. Close any older importer dialog. You do not need to restart Dragonfly to run
    the ZIP; its launcher avoids reusing an older version's Python code.
-3. Use **Tools > Python Console** to execute this complete block, and select
+3. Use **Utilities > Python Console** to execute this complete block, and select
    `dragonfly_txm_importer.zip`:
 
 ```python
@@ -42,6 +42,14 @@ Use **Full resolution** after the preview check if needed. **Install File menu
 entry** installs/updates the plugin for future sessions. Restart Dragonfly after
 installation and use **File > Import ZEISS TXM**. An older installed copy is
 backed up outside the Plugins folder.
+
+To open the `Plugins` folder, paste one of these into the File Explorer address
+bar, depending on your Dragonfly distribution:
+
+```text
+%LOCALAPPDATA%\ORS\Dragonfly2025.1\pythonUserExtensions\Plugins
+%LOCALAPPDATA%\Comet\Dragonfly2025.1\pythonUserExtensions\Plugins
+```
 
 ## What is checked
 
